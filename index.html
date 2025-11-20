@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- ^ google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -14,10 +13,11 @@
   <link rel="stylesheet" href="./css/all.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
 
-  <title>Weather App</title>
+  <title>weather App</title>
 </head>
 
 <body>
+
   <nav>
     <div class="container">
       <div class="background-nav d-flex justify-content-between my-3 p-3">
@@ -40,77 +40,144 @@
             <i class="fas fa-moon moon-icon"></i>
           </button>
         </div>
-
+      </div>
+    </div>
   </nav>
-
-
   <main>
-    <section id="box" class="d-flex justify-content-center align-items-center">
-      <div class="contaner box-bg p-5 rounded-5">
-        <div class="app-box position-relative">
-        <input 
-    type="text" 
-    id="cityInput" 
-    placeholder="e.g., Cairo, Giza, Suez" 
-    list="egyptian-governorates"
-/>
+    <section id="box" class="d-flex justify-content-center align-items-center flex-column min-vh-100">
 
-<datalist id="egyptian-governorates">
-    <option value="Cairo"></option> 
-    <option value="Giza"></option>
-    <option value="Qalyubia"></option>
-    
-    <option value="Alexandria"></option>
-    <option value="Beheira"></option>
-    <option value="Kafr El Sheikh"></option>
-    <option value="Gharbia"></option>
-    <option value="Monufia"></option>
-    <option value="Sharqia"></option>
-    <option value="Dakahlia"></option>
-    <option value="Damietta"></option>
-    <option value="Port Said"></option>
-    <option value="Ismailia"></option>
-    <option value="Suez"></option>
-    
-    <option value="Beni Suef"></option>
-    <option value="Faiyum"></option>
-    <option value="Minya"></option>
-    <option value="Asyut"></option>
-    <option value="Sohag"></option>
-    <option value="Qena"></option>
-    <option value="Luxor"></option>
-    <option value="Aswan"></option>
-    
-    <option value="Red Sea"></option>
-    <option value="New Valley"></option>
-    <option value="Matruh"></option>
-    <option value="North Sinai"></option>
-    <option value="South Sinai"></option>
-</datalist>
-          <button class="animated-btn "><i>find</i></button>
-
+      <div class="w-100 w-md-75 box-bg p-4 p-lg-5 rounded-4 mb-4">
+        <div class="app-box  position-relative">
+          <input type="text" id="cityInput" placeholder="Search City" />
+          <button class="Search-button"><i class="fa-solid fa-magnifying-glass-location"></i></button>
         </div>
-        <div class="content mt-4 d-flex justify-content-between align-items-center">
-          <div> <i class="fa-solid fa-location-dot"></i>
-            <span id="location" class="mx-1 fs-4 fw-bold">Egypt,Suez</span>
+
+        <div class="content mt-2  d-flex justify-content-between align-items-center">
+          <div class="me-3">
+            <i class="fa-solid fa-location-dot"></i>
+            <span id="location" class="mx fs-4 fw-bold"></span>
+            <span class="mx fs-4 fw-bold"></span>
           </div>
-          <div class="">
-            <p id="todayDate" class="fs-5  mb-0 mt-2">Today is sunday</p>
-            <i class="fa-regular fa-calendar-days pe-3"></i>
-            <span>27 april 2027</span>
+          <div>
+            <p id="todayDate" class="fs-5  mb-3 mt-2">Today is sunday</p>
+            <i class="fa-regular fa-calendar-days pe-1"></i>
+            <span id="date">27 april 2027</span>
           </div>
         </div>
-        <div class="weather">
-          <h1>29C</h1>
-          <h3>rain</h3>
 
+        <div id="weatherData" class="weather">
+          <div class="d-flex align-items-center">
+            <h1 id="avgWeather">29C </h1>
+            <img class="img-fluid " src="">
+          </div>
+
+          <div class="d-flex  align-items-center justify-content-evenly">
+            <h3 id="min" class="">23c</h3>
+            <h3 class="ms-3">32c</h3>
+          </div>
+          <div class="d-flex justify-content-evenly">
+            <div class="rain">
+              <i class="fa-solid fs-3 fa-cloud"></i>
+              <span id="rainAvg" class="fs-3"></span>
+            </div>
+            <div class="rain">
+              <i class="fa-solid fs-3 fa-wind"></i>
+              <span id="windSpeed" class="fs-3"></span>
+            </div>
+          </div>
         </div>
-      </div>      
+      </div>
 
+      <div class="w-100 w-md-75 box-bg mt-4 p-4 rounded-4 d-flex justify-content-evenly">
+        <div id="weatherData" class="weather">
+          <div class="d-flex flex-column align-items-center">
+            <h1 id="avgWeather1">29C </h1>
+            <img id="img1" class="img-fluid " src="">
+          </div>
+          <div class="d-flex ">
+            <h3 id="min1" class="me-2">23c</h3>
+            <h3 class="ms-3">32c</h3>
+          </div>
+          <div class="d-flex">
+            <div class="rain mx-2">
+              <i class="fa-solid fs-3 fa-cloud"></i>
+              <span id="rainAvg1" class="fs-3">10</span>
+            </div>
+            <div class="rain mx-2">
+              <i class="fa-solid fs-3 fa-wind"></i>
+              <span id="windSpeed1" class="fs-3">20</span>
+            </div>
+          </div>
+          <div>
+            <p id="todayDate1" class="fs-5 mb-3 mt-2">Today is sunday</p>
+            <i class="fa-regular fa-calendar-days pe-1"></i>
+            <span id="date1">27 april 2027</span>
+          </div>
+        </div>
+
+        <div id="weatherData" class="weather">
+          <div class="d-flex flex-column align-items-center">
+            <h1 id="avgWeather2">29C </h1>
+            <img id="img2" class="img-fluid " src="">
+          </div>
+          <div class="d-flex ">
+            <h3 id="min2" class="me-2">23c</h3>
+            <h3 class="ms-3">32c</h3>
+          </div>
+          <div class="d-flex ">
+            <div class="rain mx-2">
+              <i class="fa-solid fs-3 fa-cloud"></i>
+              <span id="rainAvg2" class="fs-3"></span>
+            </div>
+            <div class="rain mx-2">
+              <i class="fa-solid fs-3 fa-wind"></i>
+              <span id="windSpeed2" class="fs-3">20</span>
+            </div>
+          </div>
+          <div>
+            <p id="todayDate2" class="fs-5  mb-3 mt-2">Today is sunday</p>
+            <i class="fa-regular fa-calendar-days pe-1"></i>
+            <span id="date2">27 april 2027</span>
+          </div>
+        </div>
+      </div>
+      </div>
 
     </section>
+<footer class="mt-8 py-4 text-center">
+    <div class="container mx-auto px-4">
+        
+      
+        <div class="d-flex justify-content-center mb-3">
+            <a href="https://www.facebook.com/abanob.alpop.9" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-weather-color mx-3 transition-colors duration-300" title="Abanob's Facebook Profile">
+                <i class="fa-brands fa-facebook fs-4"></i>
+            </a>
+            <a href="https://github.com/abanob2005" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-weather-color mx-3 transition-colors duration-300" title="Abanob's GitHub Profile">
+                <i class="fa-brands fa-github fs-4"></i>
+            </a>
+            <a href="https://www.linkedin.com/feed/" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-weather-color mx-3 transition-colors duration-300" title="Abanob's LinkedIn Profile">
+                <i class="fa-brands fa-linkedin-in fs-4"></i>
+            </a>
+            <a href="mailto:abanobs888@gmail.com" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-weather-color mx-3 transition-colors duration-300" title="Abanob's Contact Email">
+                <i class="fa-solid fa-envelope fs-4"></i>
+            </a>
+            <a href="tel:+201202622852" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-weather-color mx-3 transition-colors duration-300" title="Abanob's Contact Email">
+                <i class="fa-solid fa-phone fs-4"></i>
+            </a>
+        </div>
+        
+      
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+            &copy; 2025 Weather App. Developed by <span class="fw-bold text-weather-color">Abanob Sameh Hanna</span>.
+        </p>
+    
+        <p class="text-xs mt-1 text-gray-500 dark:text-gray-500">
+            Powered by 
+            <a href="https://www.weatherapi.com/" target="_blank" title="Free Weather API" class="hover:text-weather-color transition-colors duration-300">WeatherAPI.com</a>
+        </p>
+    </div>
+</footer>
   </main>
-
   <script src="./js/bootstrap.bundle.js"></script>
   <script src="./js/index.js"></script>
 </body>
