@@ -41,14 +41,14 @@ console.log(today,tomorrow,afterTomorrow)
 //get the user name city by api 	
 let cityName = "cairo";
 async function getIp() {
-    await fetch('http://ip-api.com/json/?')
+    await fetch('https://ip-api.com/json/?')
         .then(res => res.json())
         .then(data => {
             cityName = data.city;
             inputCity.setAttribute("placeholder", `Your City is ${ cityName }`)
             console.log("City:", data);
         });
-    await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityName}&days=3`)
+    await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityName}&days=3`)
         .then(res => res.json())
         .then(weatherData => {
             if (weatherData.location.name == cityName) {
@@ -75,7 +75,7 @@ async function searchCity (city) {
     const input = city
     try {
         const res = await fetch(
-            (` http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${input.value}&days=3`)
+            (` https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${input.value}&days=3`)
         );
         // validatation response 
         if (res.status === 200) {
