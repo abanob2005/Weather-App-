@@ -42,7 +42,7 @@ console.log(today, tomorrow, afterTomorrow)
 
 async function getIp() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(async (position) => {  // صححت الأقواس
+    navigator.geolocation.getCurrentPosition(async (position) => { 
       const { latitude, longitude } = position.coords;
 
       try {
@@ -67,25 +67,6 @@ async function getIp() {
 }
 
 
-let cityName = "cairo";
-// async function getIp() {
-//     await fetch("http://ip-api.com/json/?")
-//         .then(res => res.json())
-//         .then(data => {
-//             cityName = data.city;
-//             inputCity.setAttribute("placeholder", `Your City is ${cityName}`)
-//             console.log("City:", data);
-//         });
-//     await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityName}&days=3&aqi=no`)
-//         .then(res => res.json())
-//         .then(weatherData => {
-//             if (weatherData.location.name == cityName) {
-//                 console.log("weather", weatherData);
-//                 display(weatherData);
-//             }
-
-
-//         });
 
 // }
 getIp()
