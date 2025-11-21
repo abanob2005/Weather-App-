@@ -19,7 +19,8 @@ const rainAvg1 = document.querySelector("#rainAvg1");
 const windSpeed1 = document.querySelector("#windSpeed1");
 const rainAvg2 = document.querySelector("#rainAvg2");
 const windSpeed2 = document.querySelector("#windSpeed2");
-
+const todayDate1 = document.querySelector("#todayDate1");
+const todayDate2 = document.querySelector("#todayDate2");
 
 
 
@@ -38,8 +39,25 @@ function getDateObjectAfter(days) {
 const today = getDateObjectAfter(0);
 const tomorrow = getDateObjectAfter(1);
 const afterTomorrow = getDateObjectAfter(2);
-console.log(today, tomorrow, afterTomorrow)
 
+async function getcairo() {
+       const input = "cairo"
+    try {
+        const res = await fetch(
+            (` https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${input}&days=3&aqi=no`)
+        );
+        // validatation response 
+        if (res.status === 200) {
+            const weatherData = await res.json();
+          
+            display(weatherData)
+        }
+    } catch (error) {
+        console.log("⚠ Network Error:", error);
+    }
+}
+
+getcairo();
 async function getIp() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(async (position) => { 
@@ -51,7 +69,7 @@ async function getIp() {
 
         cityName = weatherData.location.name;
         inputCity.setAttribute("placeholder", `Your City is ${cityName}`);
-        console.log("weather", weatherData);
+     
         display(weatherData);
 
       } catch (err) {
@@ -65,10 +83,6 @@ async function getIp() {
     console.error("Geolocation is not supported by this browser.");
   }
 }
-
-
-
-// }
 getIp()
 inputCity.nextElementSibling.addEventListener("click", function () {
     searchCity(inputCity)
@@ -89,7 +103,6 @@ async function searchCity(city) {
         // validatation response 
         if (res.status === 200) {
             const weatherData = await res.json();
-            console.log("✓ Success 200 - Weather Data:", weatherData);
             display(weatherData)
         }
     } catch (error) {
@@ -100,9 +113,9 @@ async function searchCity(city) {
 function display(content) {
     userLocation.innerHTML = (content.location.name, content.location.name);
     userLocation.nextElementSibling.innerHTML = ` , ${content.location.name, content.location.country}`;
-    avgWeahter.nextElementSibling.setAttribute("src", content.current.condition.icon);
-    avgWeahter1.nextElementSibling.setAttribute("src", content.forecast.forecastday[1].day.condition.icon);
-    avgWeahter2.nextElementSibling.setAttribute("src", content.forecast.forecastday[2].day.condition.icon);
+    avgWeahter.nextElementSibling.setAttribute("src", `https:${content.current.condition.icon}`);
+    avgWeahter1.nextElementSibling.setAttribute("src",`https:${ content.forecast.forecastday[1].day.condition.icon}`);
+    avgWeahter2.nextElementSibling.setAttribute("src", `https:${ content.forecast.forecastday[2].day.condition.icon}`);
     avgWeahter.innerHTML = `${content.forecast.forecastday[0].day.avgtemp_c} ℃`;
     avgWeahter1.innerHTML = `${content.forecast.forecastday[1].day.avgtemp_c} ℃`;
     avgWeahter2.innerHTML = `${content.forecast.forecastday[2].day.avgtemp_c} ℃`;
